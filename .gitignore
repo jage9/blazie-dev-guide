@@ -1,0 +1,6 @@
+*.raw
+*.sym
+*.lst
+__pycache__/
+*.state
+*.img
