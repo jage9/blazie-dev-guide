@@ -6,7 +6,9 @@ Start with [programming-guide.md](programming-guide.md). It explains how the uni
 
 ## How this guide was made
 
-This guide was written with the help of AI (Claude, by Anthropic). The information comes from the 2003 English firmware, from programs that Blazie Engineering and others wrote for these units, and from test programs that were run on the Blazie emulator. The guide marks each firmware call that was not tested.
+This guide was written with the help of AI (Claude, by Anthropic). The information comes from the 2003 English firmware and from programs that Blazie Engineering and others wrote for these units.
+
+The documented firmware calls were tested on the Blazie emulator. Test programs compared each result with the expected value and recorded the results automatically. A person ran these programs and checked the speech, tones and keys by ear. Farkle was tested automatically in a Z80 simulator over hundreds of games, and a person played it on the emulator. The guide marks each firmware call that was not tested.
 
 There can be errors. Test your programs on the emulator before you use them on a real unit, and keep a backup of your files. If you find an error, please open an issue.
 
