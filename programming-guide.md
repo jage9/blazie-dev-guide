@@ -58,10 +58,27 @@ STACK_SIZE equ	128
 To build the program:
 
 1. Save the code as `hello.asm`.
-2. In the folder that contains `hello.asm`, type `python path	ouild.py hello`.
+2. In the folder that contains `hello.asm`, type `python path\to\build.py hello`.
 3. Make sure that the file `hello.bns` is created.
 
 The file `examples/hello.asm` contains this program.
+
+### What build.py does
+
+The unit runs a program only if its header is correct (section 4). sjasmplus assembles the source code, but it does not know the header format of the unit. When you type `python build.py name`, `build.py`:
+
+1. Runs sjasmplus on `name.asm`. sjasmplus must be in the same folder as `build.py`.
+2. Adds the stack to the end of the program. The stack size is the value of `STACK_SIZE` in the source code. If the source does not set `STACK_SIZE`, the stack is 256 bytes.
+3. Writes the four header values: the checksum length, the file size minus 15, the checksum and the stack pointer.
+4. Saves the result as `name.bns`.
+
+Your source code must:
+
+- start with the header of section 3: `jr start`, `"BNS"`, a zero byte and four empty words
+- set `org 0x1000`
+- put the label `code_end` after the code and fixed data, and before the variables
+
+sjasmplus also writes the files `name.raw`, `name.sym` and `name.lst`. `name.lst` shows the address of each instruction. `name.sym` gives the address of each label. You do not need these files on the unit.
 
 ## 4. The program header
 
