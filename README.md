@@ -33,7 +33,7 @@ This makes `hello.bns`. Section 13 of the guide tells you how to copy it to the 
 |---|---|
 | `programming-guide.md` | The programming guide |
 | `build.py` | Assembles a program and adds the header, checksum and stack |
-| `sjasmplus.exe`, `sjasmplus-LICENSE.txt` | The Z80 assembler and its licence |
+| `sjasmplus.exe` | The Z80 assembler |
 | `examples/hello.asm` | The first program in the guide |
 | `examples/keytest.asm` | Speaks the code of each key that you push |
 | `examples/sndtest.asm` | Plays tones on the speech chip |
@@ -41,11 +41,10 @@ This makes `hello.bns`. Section 13 of the guide tells you how to copy it to the 
 
 ## Licence
 
-The guide, `build.py` and the examples are under the MIT licence. See `LICENSE`. sjasmplus has its own licence.
+The guide, `build.py` and the examples are under the MIT licence. See `LICENSE`.
 
 ## Credits
 
 - sjasmplus is by aprisobal and other contributors, under a BSD licence. See `sjasmplus-LICENSE.txt`.
 - The Blazie emulator is part of [ssi263-speech](https://github.com/tgeczy/ssi263-speech) by Tamas Geczy.
-- The scoring and computer player of Farkle follow the Farkle game in PlayPalace.
 - The Braille Lite 2000 and its firmware are by Blazie Engineering, later Freedom Scientific. The firmware is not part of this repository.
