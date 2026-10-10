@@ -315,6 +315,18 @@ Then start the emulator and run the program.
 
 To record test results, write them into a variable in your program. The variable is in the program file. After the test, close the emulator and copy the program file out with `blazie_files extract`. Then read the results from the file.
 
+### Known firmware variants
+
+Two carriers of the Type 'n Speak firmware differ: `tns.exe` from the June 2003 archive unpacks `TNSENG.TNS` (273,991 bytes, sha256 `fbcbef25734bede87b36c4a2e0ef7b22d7e9884c91ed7d7c950982b31336f946`), while the v0.7.5 emulator asset ships `TNSENG.TNS` (273,985 bytes, sha256 `a317fae688f19bbbf4619d68d369d9f7e1e104618ee6a5141133e4d0ae2878b3`). Both are legitimate Type 'n Speak builds, so a hash mismatch here means version drift, not a corrupt download. The Braille 'n Speak and Braille Lite images are byte-identical across the same two carriers:
+
+| Image | Length | sha256 |
+|---|---|---|
+| BL2ENG.BNS (Braille Lite 2000, English) | 274,362 | `a55455ebb8ccc1a9720150c53823ac484fd9aa7926b43079bf5d6ea7f2bf6002` |
+| bns2000/BS03ENG.BNS (Braille 'n Speak 2000, English) | 274,218 | `9ee0af633beb744c3905e9e3a940c13873fa05faaee5ee6442f2f96cfc1d004d` |
+| BS2SLL.BNS (Braille 'n Speak 2000, Slovak) | 274,250 | `8c01c59845b5609c5a1160189664b4c4e6f9fa56732503d1fd63ec026f43366f` |
+
+The v0.7.5 asset also carries `BL2SPA.BNS` (Braille Lite 2000, Spanish; 274,034 bytes, sha256 `7e0ac26ce6caadc80c27c82ac3a55f379fff8adb1dfb384bef883457694b50ed`), which the emulator's firmware manifest does not list, and `TNSSPA.TNS` (Type 'n Speak, Spanish; 273,822 bytes, sha256 `78b2cece30545af324482c09a15f5406fb53ec0c0dad60cb6bdb7f381ac2ddbb`).
+
 ## 14. Calls that are not fully known
 
 The firmware has more calls than sections 6 to 11 describe. Test these calls before you use them in a program.
