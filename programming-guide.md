@@ -325,7 +325,7 @@ Two carriers of the Type 'n Speak firmware differ: `tns.exe` from the June 2003 
 | bns2000/BS03ENG.BNS (Braille 'n Speak 2000, English) | 274,218 | `9ee0af633beb744c3905e9e3a940c13873fa05faaee5ee6442f2f96cfc1d004d` |
 | BS2SLL.BNS (Braille 'n Speak 2000, Slovak) | 274,250 | `8c01c59845b5609c5a1160189664b4c4e6f9fa56732503d1fd63ec026f43366f` |
 
-The v0.7.5 asset also carries `BL2SPA.BNS` (Braille Lite 2000, Spanish; 274,034 bytes, sha256 `7e0ac26ce6caadc80c27c82ac3a55f379fff8adb1dfb384bef883457694b50ed`), which the emulator's firmware manifest does not list.
+The v0.7.5 asset also carries `BL2SPA.BNS` (Braille Lite 2000, Spanish; 274,034 bytes, sha256 `7e0ac26ce6caadc80c27c82ac3a55f379fff8adb1dfb384bef883457694b50ed`), which the emulator's firmware manifest does not list, and `TNSSPA.TNS` (Type 'n Speak, Spanish; 273,822 bytes, sha256 `78b2cece30545af324482c09a15f5406fb53ec0c0dad60cb6bdb7f381ac2ddbb`).
 
 ## 14. Calls that are not fully known
 
