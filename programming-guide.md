@@ -95,7 +95,7 @@ Each program starts with a header of 14 bytes. `build.py` writes the header for 
 
 All 16-bit values are little-endian.
 
-The unit calculates the checksum before it runs the program. If the checksum is incorrect, the unit says "program is corrupted" and does not run the program.
+The unit calculates the checksum before it runs the program. If the checksum is incorrect, the unit says "program is corrupted" and does not run the program. A second reported cause is a full unit: loading copies the program to RAM first, so with no RAM pages free the load fails and the unit reports the program as corrupted. Free some RAM pages and try again. (Reported by an operator; not independently tested here.)
 
 Put only the code and fixed data in the checksum. Do not put the variables or the stack in the checksum, because they change during a run. `build.py` puts all bytes before the label `code_end` in the checksum.
 
