@@ -293,7 +293,7 @@ These calls are not tested.
 2. Change it to load your program.
 3. Give a simulated result for each call that your program uses.
 
-The simulator runs only Z80 instructions. If your program uses a Z180 instruction such as `IN0`, replace the instruction in the loaded program before the test.
+The simulator runs only Z80 instructions. If your program uses a Z180 instruction such as `IN0`, replace the instruction in the loaded program before the test. Shipped Blazie programs confirm this matters: they contain real `ED 38`/`ED 39` (`in0`/`out0`) bytes, which a stock Z80 disassembler misreads, so use a Z180 table when disassembling.
 
 ## 13. Install and run a program on the emulator
 
