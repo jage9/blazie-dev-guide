@@ -149,7 +149,7 @@ All calls in sections 6 to 10 were tested on the Blazie emulator, except where a
 | 0x15 | Get the command line | HL = buffer | The buffer contains the command line. HL = 13 when there are no arguments. Not tested with arguments |
 | 0x3C | Unit type | | HL = 5 on the Braille Lite 2000 |
 
-The unit clock can keep only the years 1989 to 2020. The Blazie emulator sets the clock to an earlier year with the same calendar. For example, in 2026 call 0x12 gives the year 2015.
+The unit clock can keep only the years 1989 to 2020. The Blazie emulator sets the clock back 28 years, which keeps the identical calendar as the unit counts past New Year. For example, in 2026 call 0x12 gives the year 1998, and in 2027 it gives 1999. (Older emulator versions mapped to the nearest same-calendar year instead -- 2015 for 2026 -- which put every weekday off by one from March 2027; units saved by those versions move to the new year when they load.) Two limits remain: a unit started in 2048 or later loses the calendar at its next New Year, and 2100 is not a leap year.
 
 ## 7. Keys
 
