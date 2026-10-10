@@ -114,6 +114,37 @@ def checksum(data):
     return hl
 ```
 
+### Old-format headers
+
+Shipped Blazie programs from the 1990s (RECLAIM, CHESS, BLACKJAK, GUESS, MB, QBACK, TTT, ZAPEM) use a 26-byte header instead of the 14-byte header above: bytes `18 18`, the text `BNS` and a zero byte, the same four words at offsets 6 to 12, then twelve zero bytes at offsets 14 to 25. Code starts at file offset 26 (address `0x101A`); the first instruction is always `F3 31` (`di`; `ld sp,nn`).
+
+The checksum works the same way: it covers the word6 bytes counted from offset 14, and the function above reproduces the stored word10 on every shipped program tested, old-format and new-format alike. Two words differ in meaning between the generations: on new-format files word8 is the file size minus 15 and word12 is `0x1000` plus file size minus 1, while on old-format files word12 is `0x1000` plus word8, and word8 matches file length minus 1 only on RECLAIM.BNS. `verify_header.py` checks any `.bns` file you give it:
+
+```
+python verify_header.py RECLAIM.BNS
+```
+
+Verified files (all reproduce word10):
+
+| File | Length | Header | w6 | w8 | w10 | w12 |
+|---|---|---|---|---|---|---|
+| RECLAIM.BNS | 28552 | 18 18 | 15576 | 28551 | aec2 | 7f87 |
+| BLACKJAK.BNS | 22957 | 18 18 | 17247 | 19846 | 5a9c | 5d86 |
+| CHESS.BNS | 27073 | 18 18 | 17322 | 21684 | 646a | 64b4 |
+| GUESS.BNS | 14706 | 18 18 | 6990 | 8950 | e29e | 32f6 |
+| MB.BNS | 4128 | 18 18 | 1343 | 3341 | 4ab5 | 1d0d |
+| QBACK.BNS | 4128 | 18 18 | 1420 | 3409 | 151c | 1d51 |
+| TTT.BNS | 14702 | 18 18 | 7194 | 9211 | cb45 | 33fb |
+| ZAPEM.BNS | 9160 | 18 18 | 3805 | 5760 | a675 | 2680 |
+| BSNAME.BNS | 25108 | 18 0C | 6895 | 25093 | 6e8a | 7213 |
+| bongo.bns | 37665 | 18 0C | 25210 | 37650 | 832e | a320 |
+| hangman.bns | 20455 | 18 0C | 9463 | 20440 | d656 | 5fe6 |
+| mineswp.bns | 19048 | 18 0C | 13808 | 19033 | 7b62 | 5a67 |
+| simon.bns | 10559 | 18 0C | 8580 | 10544 | 5e94 | 393e |
+| sol.bns | 16992 | 18 0C | 10407 | 16977 | 9073 | 525f |
+| BL2ENG.BNS | 274362 | 18 0C | 3438 | 6133 | 4721 | 2803 |
+| farkle.bns (this repo) | 3617 | 18 0C | 3175 | 3602 | 4941 | 1e20 |
+
 ## 5. Firmware calls
 
 To make a firmware call:
